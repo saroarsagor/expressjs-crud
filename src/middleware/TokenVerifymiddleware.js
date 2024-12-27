@@ -9,10 +9,12 @@ module.exports = (req, res, next) => {
     }
 
     // Verify the token
-    jwt.verify(token, 'SecretKey123', (err, decoded) => {
+    jwt.verify(token, 'secretOrPrivateKey1234', (err, decoded) => {
         if (err) {
             return res.status(401).json({ status: 'invalid token', data: err.message });
         }
+        let Email = decoded['data']['Email'];
+        req.headers.email=Email;
         next();
     });
 };

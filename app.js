@@ -27,7 +27,7 @@ app.use(limiter)
 const mongoose = require('mongoose');
 
 let URI = "mongodb://localhost:27017/School";
-let OPTION = { user: '', pass: '' };
+let OPTION = { user: '', pass: '',autoIndex: true };
 
 mongoose.connect(URI, OPTION)
     .then(() => {

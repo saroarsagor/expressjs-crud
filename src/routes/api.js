@@ -1,6 +1,7 @@
 const express=require('express');
 const HelloController = require("../controllers/HelloController");
 const StudentsController = require("../controllers/StudentsController");
+const UserProfileController = require("../controllers/UserProfileController");
 const TokenIssueController = require("../controllers/TokenIssueController");
 const JWTPartices = require("../controllers/JWTPartices");
 const TokenVerifymiddleware = require("../middleware/TokenVerifymiddleware");
@@ -14,6 +15,11 @@ router.get( "/ReadStudent",TokenVerifymiddleware, StudentsController.ReadStudent
 router.post( "/Insertstudent", StudentsController.Insertstudent);
 router.post( "/UpdateStudent/:id", StudentsController.UpdateStudent);
 router.get( "/DeleteStudent/:id", StudentsController.DeleteStudent);
+
+//create user
+router.post( "/CreateUser", UserProfileController.CreateUser);
+router.post( "/UserLogin", UserProfileController.UserLogin);
+router.get( "/ReadUser",TokenVerifymiddleware, UserProfileController.ReadUser);
 
 
 //CreateToken
